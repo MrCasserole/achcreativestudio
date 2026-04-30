@@ -183,16 +183,24 @@ if (galleryImages.length) {
 }
 
 // CONTACT FORM (NO REDIRECT)
-const form = document.getElementById('form');
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('form');
 
-if (form) {
+  if (!form) return;
+
   const submitBtn = form.querySelector('button[type="submit"]');
+  const status = form.querySelector('.form-status');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const formData = new FormData(form);
     const originalText = submitBtn.textContent;
+
+    if (status) {
+      status.textContent = 'Wysyłam wiadomość...';
+      status.classList.remove('success', 'error');
+    }
 
     submitBtn.textContent = 'Wysyłam...';
     submitBtn.disabled = true;
@@ -209,16 +217,32 @@ if (form) {
       const data = await response.json();
 
       if (response.ok) {
-        alert('Wiadomość wysłana 🚀');
         form.reset();
+
+        if (status) {
+          status.textContent = 'Dzięki — wiadomość została wysłana.';
+          status.classList.add('success');
+        } else {
+          alert('Wiadomość wysłana 🚀');
+        }
       } else {
-        alert('Błąd: ' + data.message);
+        if (status) {
+          status.textContent = data.message || 'Coś poszło nie tak. Spróbuj ponownie.';
+          status.classList.add('error');
+        } else {
+          alert('Błąd: ' + data.message);
+        }
       }
     } catch (error) {
-      alert('Coś poszło nie tak. Spróbuj ponownie.');
+      if (status) {
+        status.textContent = 'Nie udało się wysłać wiadomości. Spróbuj ponownie.';
+        status.classList.add('error');
+      } else {
+        alert('Coś poszło nie tak. Spróbuj ponownie.');
+      }
     } finally {
       submitBtn.textContent = originalText;
       submitBtn.disabled = false;
     }
   });
-}
+});
