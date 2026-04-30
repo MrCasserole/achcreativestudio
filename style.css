@@ -1250,3 +1250,19 @@ footer {
     box-sizing: border-box;
   }
 }
+
+/* SAFARI MOBILE CONTACT FIX */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 900px) {
+    .contact-hero h1 {
+      font-size: 48px !important;
+      line-height: 0.92 !important;
+      max-width: 100% !important;
+      white-space: normal !important;
+    }
+
+    .contact-hero {
+      overflow: hidden !important;
+    }
+  }
+}
