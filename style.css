@@ -740,3 +740,186 @@ footer {
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* PROJECT CARD HOVER OVERLAY */
+.card {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .card::after {
+    content: "View project →";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: rgba(0, 0, 0, 0.62);
+    color: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .card:hover::after {
+    opacity: 1;
+  }
+  
+  /* HERO FADE + DELAY */
+  .hero h1,
+  .hero .subtitle,
+  .hero .lead,
+  .hero .btn,
+  .hero .hero-img {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: heroFade 0.8s ease forwards;
+  }
+  
+  .hero h1 {
+    animation-delay: 0.1s;
+  }
+  
+  .hero .subtitle {
+    animation-delay: 0.25s;
+  }
+  
+  .hero .lead {
+    animation-delay: 0.4s;
+  }
+  
+  .hero .btn {
+    animation-delay: 0.55s;
+  }
+  
+  .hero .hero-img {
+    animation-delay: 0.35s;
+  }
+  
+  @keyframes heroFade {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .about-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 420px);
+    gap: 64px;
+    align-items: center;
+  }
+  
+  .about-text {
+    grid-column: 1;
+  }
+  
+  .about-img {
+    grid-column: 2;
+    justify-self: end;
+    width: 100%;
+  }
+  
+  @media (max-width: 900px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  
+    .about-text,
+    .about-img {
+      grid-column: auto;
+    }
+  
+    .about-img img {
+      height: 300px;
+    }
+  }
+
+  /* CONTACT PAGE */
+.contact-page {
+    flex: 1;
+    padding: 72px 48px;
+  }
+  
+  .contact-hero {
+    min-height: calc(100vh - 160px);
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  
+  .contact-hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 10vw, 150px);
+    line-height: 0.86;
+    letter-spacing: 2px;
+    margin: 0 0 32px;
+  }
+  
+  .contact-hero p {
+    max-width: 420px;
+    color: #bdbdbd;
+    line-height: 1.8;
+  }
+  
+  .contact-form {
+    display: grid;
+    gap: 22px;
+  }
+  
+  .contact-form label {
+    display: grid;
+    gap: 10px;
+    color: #aaa;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #f2f2f2;
+    padding: 18px;
+    font: inherit;
+  }
+  
+  .contact-form textarea {
+    min-height: 160px;
+    resize: vertical;
+  }
+  
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: #f2f2f2;
+  }
+  
+  .contact-form button {
+    margin-top: 12px;
+    background: #f2f2f2;
+    color: #050505;
+    border: none;
+    padding: 18px 22px;
+    font: inherit;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 900px) {
+    .contact-page {
+      padding: 48px 20px;
+    }
+  
+    .contact-hero {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
