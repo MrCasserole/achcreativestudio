@@ -1117,3 +1117,49 @@ footer {
     font-size: 28px;
   }
 }
+
+/* SERVICES CENTERED LAYOUT FIX */
+.services-grid > div {
+  position: relative;
+  border-top: none;
+  padding-top: 0;
+  padding-bottom: 28px;
+  text-align: center;
+}
+
+.services-grid > div::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 64px;
+  height: 1px;
+  background: #333;
+  transform: translateX(-50%);
+  transition: width 0.25s ease, background 0.25s ease;
+}
+
+.services-grid > div:hover::after {
+  width: 92px;
+  background: #f2f2f2;
+}
+
+.service-top {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  margin-bottom: 28px;
+}
+
+.services-grid h3,
+.services-grid p {
+  text-align: center;
+}
+
+.services-grid p {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 260px;
+}
