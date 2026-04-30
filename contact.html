@@ -32,28 +32,38 @@
       <p>Masz markę, lokal, produkt albo pomysł? Napisz — zobaczymy, co można z tego wycisnąć wizualnie.</p>
     </div>
 
-    <form class="contact-form">
+    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+
+      <!-- TWÓJ KLUCZ -->
+      <input type="hidden" name="access_key" value="9e2ba512-eb10-4288-80d6-fecd91f6ddf1">
+    
+      <!-- IMIĘ -->
       <label>
         Imię
-        <input type="text" placeholder="Twoje imię">
+        <input type="text" name="name" placeholder="Twoje imię" required>
       </label>
-
+    
+      <!-- EMAIL -->
       <label>
         E-mail
-        <input type="email" placeholder="kontakt@email.pl">
+        <input type="email" name="email" placeholder="kontakt@email.pl" required>
       </label>
-
+    
+      <!-- TEMAT -->
       <label>
         Temat
-        <input type="text" placeholder="Branding / menu / social media...">
+        <input type="text" name="subject" placeholder="Branding / menu / social media..." required>
       </label>
-
+    
+      <!-- WIADOMOŚĆ -->
       <label>
         Wiadomość
-        <textarea placeholder="Napisz kilka zdań o projekcie"></textarea>
+        <textarea name="message" required></textarea>
       </label>
-
-      <button type="submit">Wyślij wiadomość →</button>
+    
+      <!-- BUTTON -->
+      <button type="submit">Wyślij</button>
+    
     </form>
   </section>
 </main>
