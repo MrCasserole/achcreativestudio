@@ -48,42 +48,39 @@ revealElements.forEach((el) => {
   revealObserver.observe(el);
 });
 
-// Custom cursor
-const cursor = document.createElement('div');
-cursor.classList.add('custom-cursor');
-document.body.appendChild(cursor);
-
-document.addEventListener('mousemove', (event) => {
-  cursor.style.left = `${event.clientX}px`;
-  cursor.style.top = `${event.clientY}px`;
-});
-
-const links = document.querySelectorAll('a, button');
-
 // Custom cursor smooth follow
-
 const cursor = document.createElement('div');
 cursor.classList.add('custom-cursor');
 document.body.appendChild(cursor);
 
 let mouseX = 0;
 let mouseY = 0;
-
 let currentX = 0;
 let currentY = 0;
 
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
+const links = document.querySelectorAll('a, button');
+
+document.addEventListener('mousemove', (event) => {
+  mouseX = event.clientX;
+  mouseY = event.clientY;
+});
+
+links.forEach((link) => {
+  link.addEventListener('mouseenter', () => {
+    cursor.classList.add('cursor-hover');
+  });
+
+  link.addEventListener('mouseleave', () => {
+    cursor.classList.remove('cursor-hover');
+  });
 });
 
 function animateCursor() {
-  // im mniejsza liczba, tym bardziej „smooth”
   currentX += (mouseX - currentX) * 0.15;
   currentY += (mouseY - currentY) * 0.15;
 
-  cursor.style.left = currentX + 'px';
-  cursor.style.top = currentY + 'px';
+  cursor.style.left = `${currentX}px`;
+  cursor.style.top = `${currentY}px`;
 
   requestAnimationFrame(animateCursor);
 }
