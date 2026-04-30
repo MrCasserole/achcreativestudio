@@ -51,6 +51,7 @@ revealElements.forEach((el) => {
 // Custom cursor smooth follow
 const cursor = document.createElement('div');
 cursor.classList.add('custom-cursor');
+cursor.style.zIndex = '1000000';
 document.body.appendChild(cursor);
 
 let mouseX = 0;
@@ -86,3 +87,97 @@ function animateCursor() {
 }
 
 animateCursor();
+
+// LIGHTBOX GALLERY + SWIPE
+const galleryImages = Array.from(document.querySelectorAll('.gallery img'));
+
+if (galleryImages.length) {
+  let currentIndex = 0;
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  const lightbox = document.createElement('div');
+  lightbox.className = 'lightbox';
+
+  lightbox.innerHTML = `
+    <button class="lightbox-close" aria-label="Zamknij">×</button>
+    <button class="lightbox-btn lightbox-prev" aria-label="Poprzednie zdjęcie">‹</button>
+    <img class="lightbox-img" src="" alt="">
+    <button class="lightbox-btn lightbox-next" aria-label="Następne zdjęcie">›</button>
+    <div class="lightbox-counter"></div>
+  `;
+
+  document.body.appendChild(lightbox);
+
+  const lightboxImg = lightbox.querySelector('.lightbox-img');
+  const closeBtn = lightbox.querySelector('.lightbox-close');
+  const prevBtn = lightbox.querySelector('.lightbox-prev');
+  const nextBtn = lightbox.querySelector('.lightbox-next');
+  const counter = lightbox.querySelector('.lightbox-counter');
+
+  function updateLightbox() {
+    const img = galleryImages[currentIndex];
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt || '';
+    counter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
+  }
+
+  function openLightbox(index) {
+    currentIndex = index;
+    updateLightbox();
+    lightbox.classList.add('open');
+    document.body.classList.add('menu-open');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.classList.remove('menu-open');
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % galleryImages.length;
+    updateLightbox();
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+    updateLightbox();
+  }
+
+  galleryImages.forEach((img, index) => {
+    img.addEventListener('click', () => openLightbox(index));
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+  nextBtn.addEventListener('click', showNext);
+  prevBtn.addEventListener('click', showPrev);
+
+  lightbox.addEventListener('click', (event) => {
+    if (event.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (!lightbox.classList.contains('open')) return;
+
+    if (event.key === 'Escape') closeLightbox();
+    if (event.key === 'ArrowRight') showNext();
+    if (event.key === 'ArrowLeft') showPrev();
+  });
+
+  lightbox.addEventListener('touchstart', (event) => {
+    touchStartX = event.changedTouches[0].screenX;
+  });
+
+  lightbox.addEventListener('touchend', (event) => {
+    touchEndX = event.changedTouches[0].screenX;
+    const swipeDistance = touchEndX - touchStartX;
+
+    if (Math.abs(swipeDistance) < 50) return;
+
+    if (swipeDistance < 0) {
+      showNext();
+    } else {
+      showPrev();
+    }
+  });
+}
