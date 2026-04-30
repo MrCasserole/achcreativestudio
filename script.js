@@ -47,3 +47,13 @@ const revealObserver = new IntersectionObserver((entries) => {
 revealElements.forEach((el) => {
   revealObserver.observe(el);
 });
+
+// Custom cursor
+const cursor = document.createElement('div');
+cursor.classList.add('custom-cursor');
+document.body.appendChild(cursor);
+
+document.addEventListener('mousemove', (event) => {
+  cursor.style.left = `${event.clientX}px`;
+  cursor.style.top = `${event.clientY}px`;
+});

@@ -923,3 +923,32 @@ footer {
       gap: 48px;
     }
   }
+
+  /* CUSTOM CURSOR */
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+
+  a,
+  button,
+  input,
+  textarea {
+    cursor: none;
+  }
+
+  .custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 99999;
+    mix-blend-mode: difference;
+  }
+}
