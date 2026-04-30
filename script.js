@@ -60,12 +60,32 @@ document.addEventListener('mousemove', (event) => {
 
 const links = document.querySelectorAll('a, button');
 
-links.forEach(link => {
-  link.addEventListener('mouseenter', () => {
-    cursor.style.transform = 'translate(-50%, -50%) scale(1.8)';
-  });
+// Custom cursor smooth follow
 
-  link.addEventListener('mouseleave', () => {
-    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-  });
+const cursor = document.createElement('div');
+cursor.classList.add('custom-cursor');
+document.body.appendChild(cursor);
+
+let mouseX = 0;
+let mouseY = 0;
+
+let currentX = 0;
+let currentY = 0;
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
 });
+
+function animateCursor() {
+  // im mniejsza liczba, tym bardziej „smooth”
+  currentX += (mouseX - currentX) * 0.15;
+  currentY += (mouseY - currentY) * 0.15;
+
+  cursor.style.left = currentX + 'px';
+  cursor.style.top = currentY + 'px';
+
+  requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
