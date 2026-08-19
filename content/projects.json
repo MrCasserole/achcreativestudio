@@ -1,0 +1,6 @@
+[
+  {"title":"Irish Pub — Summertime","slug":"irish-summertime","type":"Art direction · Merch · Social media","intro":"Letnia odsłona Irish Pub: autorska grafika, merch i komunikacja zaprojektowane jako jeden spójny, wakacyjny system.","cover":"/portfolio/hero-irish-merch.jpg","images":["/portfolio/hero-irish-merch.jpg","/portfolio/irish-staff.jpg","/portfolio/irish-detail.jpg"],"order":1,"published":true},
+  {"title":"Croccante","slug":"croccante","type":"Branding · Social media · Foto","intro":"Kolorowy system komunikacji i fotografia dla marki, która miała wyglądać równie apetycznie, jak smakuje.","cover":"/portfolio/croccante-cover.jpg","images":["/portfolio/croccante-cover.jpg","/portfolio/croccante-process-01.jpg","/portfolio/croccante-process-02.jpg","/portfolio/croccante-process-03.jpg"],"order":2,"published":true},
+  {"title":"Irish Pub — Social","slug":"irish-social","type":"Fotografia · Content · Creative direction","intro":"Fotografia i krótkie formy pokazujące ludzi, światło i atmosferę miejsca — bez udawania, z energią prawdziwego pubu.","cover":"/portfolio/hero-irish-neon.jpg","images":["/portfolio/hero-irish-neon.jpg","/portfolio/hero-irish-bar.jpg","/portfolio/hero-irish-team.jpg","/portfolio/hero-irish-fire.jpg","/portfolio/hero-irish-garden.jpg"],"order":3,"published":true}
+]
+
