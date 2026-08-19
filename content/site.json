@@ -1,0 +1,35 @@
+{
+  "seo_title": "ACH! Creative Studio — Branding, Print, Digital",
+  "seo_description": "Niezależne studio kreatywne z Rzeszowa. Branding, print, digital i social media projektowane z myślą o ludziach.",
+  "hero": {
+    "location": "Rzeszów · Polska",
+    "studio_label": "Independent creative studio",
+    "line": "Projektuję z myślą o",
+    "emphasis": "ludziach.",
+    "images": ["/portfolio/hero-irish-merch.jpg", "/portfolio/hero-irish-bar.jpg", "/portfolio/hero-irish-neon.jpg", "/portfolio/hero-irish-team.jpg", "/portfolio/hero-irish-fire.jpg", "/portfolio/hero-irish-garden.jpg"]
+  },
+  "studio": {
+    "before": "Pomagam markom znaleźć ich",
+    "emphasis": "własny język",
+    "after": "— i zamienić go w wyrazisty design.",
+    "note": "ACH! to niezależne studio kreatywne. Łączę pomysł, strategię i formę, żeby tworzyć rzeczy piękne, użyteczne i prawdziwie Twoje."
+  },
+  "ticker": "BIG IDEAS · HUMAN TOUCH · BOLD DESIGN ·",
+  "projects_intro": "Branding, fotografia i komunikacja stworzone dla marek, z którymi pracuję.",
+  "services_heading": { "line": "Od pierwszej myśli do ostatniego", "emphasis": "detalu." },
+  "services": [
+    { "number": "01", "title": "Branding", "text": "Strategiczne identyfikacje, które mają charakter i dobrze pracują na markę." },
+    { "number": "02", "title": "Print", "text": "Materiały drukowane dopracowane od pierwszego szkicu aż po produkcję." },
+    { "number": "03", "title": "Digital", "text": "Strony i komunikacja cyfrowa, które są proste, czytelne i zapamiętywalne." },
+    { "number": "04", "title": "Social media", "text": "Spójne systemy wizualne, dzięki którym marka mówi własnym głosem." }
+  ],
+  "contact": {
+    "kicker": "Masz pomysł?",
+    "prompt": "Zróbmy coś",
+    "emphasis": "fajnego.",
+    "email": "kontakt@achcreativestudio.pl",
+    "instagram_url": "https://www.instagram.com/achcreativestudio/",
+    "location": "Rzeszów · współpraca w całej Polsce"
+  }
+}
+

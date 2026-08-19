@@ -6,6 +6,78 @@ media:
   categories: [image]
 
 content:
+  - name: site
+    label: Treść strony
+    type: file
+    path: content/site.json
+    format: json
+    operations:
+      delete: false
+    fields:
+      - { name: seo_title, label: Tytuł w Google i karcie przeglądarki, type: string, required: true }
+      - { name: seo_description, label: Opis strony dla Google, type: text, required: true }
+      - name: hero
+        label: Hero / pierwsza sekcja
+        type: object
+        fields:
+          - { name: location, label: Lokalizacja, type: string, required: true }
+          - { name: studio_label, label: Podpis studia, type: string, required: true }
+          - { name: line, label: Tekst główny, type: string, required: true }
+          - { name: emphasis, label: Wyróżnione słowo, type: string, required: true }
+          - name: images
+            label: Szybkie klatki hero
+            type: image
+            required: true
+            options:
+              path: portfolio
+              multiple: { min: 6, max: 6 }
+              unique: true
+              extensions: [jpg, jpeg, png, webp]
+              rename: safe
+      - name: studio
+        label: Sekcja O studio
+        type: object
+        fields:
+          - { name: before, label: Tekst przed wyróżnieniem, type: string, required: true }
+          - { name: emphasis, label: Wyróżniony fragment, type: string, required: true }
+          - { name: after, label: Tekst po wyróżnieniu, type: string, required: true }
+          - { name: note, label: Opis studia, type: text, required: true }
+      - name: ticker
+        label: Przewijane hasło
+        type: string
+        required: true
+      - name: projects_intro
+        label: Opis nad projektami
+        type: text
+        required: true
+      - name: services_heading
+        label: Nagłówek usług
+        type: object
+        fields:
+          - { name: line, label: Pierwsza linia, type: string, required: true }
+          - { name: emphasis, label: Wyróżnione zakończenie, type: string, required: true }
+      - name: services
+        label: Usługi
+        type: object
+        list:
+          min: 1
+          max: 8
+          collapsible: { collapsed: true, summary: "{number} — {title}" }
+        fields:
+          - { name: number, label: Numer, type: string, required: true }
+          - { name: title, label: Nazwa, type: string, required: true }
+          - { name: text, label: Opis, type: text, required: true }
+      - name: contact
+        label: Kontakt
+        type: object
+        fields:
+          - { name: kicker, label: Mały nagłówek, type: string, required: true }
+          - { name: prompt, label: Pierwsza linia wezwania, type: string, required: true }
+          - { name: emphasis, label: Wyróżnione zakończenie, type: string, required: true }
+          - { name: email, label: Adres e-mail, type: string, required: true }
+          - { name: instagram_url, label: Link do Instagrama, type: string, required: true }
+          - { name: location, label: Lokalizacja / zasięg, type: string, required: true }
+
   - name: projects
     label: Projekty
     type: file
@@ -55,4 +127,3 @@ content:
 settings:
   commit:
     identity: user
-
